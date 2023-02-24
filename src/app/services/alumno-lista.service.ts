@@ -101,7 +101,11 @@ export class AlumnoListaService {
       of(this.lista)
         .pipe(
           map((list: Alumnos[]) => {
-            return list.filter((list: Alumnos) => list.nombre == nombre);
+            return list.filter((alumn) => {
+              return alumn.nombre
+                .toLocaleLowerCase()
+                .includes(nombre.toLocaleLowerCase());
+            });
           })
         )
         .subscribe((list) => {
