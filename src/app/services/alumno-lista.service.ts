@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Alumnos } from '../models/alumnos';
 import { DataSource } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, from, map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,15 +20,15 @@ export class AlumnoListaService {
       asistencia: true,
     },
     {
-      nombre: 'Martín Elías',
-      apellidos: 'de los Ríos Acosta',
+      nombre: 'Juanito',
+      apellidos: 'Acosta Hernan',
       curso: 'React JS',
       tareas: 10,
       esperadas: 10,
       asistencia: true,
     },
     {
-      nombre: 'Matías ',
+      nombre: 'Misael ',
       apellidos: 'de Greiff Rincón',
       curso: 'Angular JS',
       tareas: 9,
@@ -36,7 +36,7 @@ export class AlumnoListaService {
       asistencia: false,
     },
     {
-      nombre: 'Sebastián',
+      nombre: 'Julieta',
       apellidos: 'del Campo Yepes',
       curso: 'Java Inicial',
       tareas: 8,
@@ -46,6 +46,16 @@ export class AlumnoListaService {
   ];
   constructor() {
     this.Alumnos$ = new BehaviorSubject(this.lista);
+
+    of(this.lista)
+      .pipe(
+        map((list: Alumnos[]) => {
+          return list.filter((list: Alumnos) => list.nombre == 'Julieta');
+        })
+      )
+      .subscribe((list) => {
+        console.log('obtenido desde of', list);
+      });
   }
   //observable
   // obtenerAlumnosObservable(): Observable<Alumnos[]> {
@@ -72,8 +82,8 @@ export class AlumnoListaService {
 
   eliminar(alumn: any) {
     var Aux = this.lista;
-    console.log('Aux', Aux);
-    console.log('alumn', this.lista);
+    //console.log('Aux', Aux);
+    //console.log('alumn', this.lista);
 
     Aux.forEach(function (currentValue, index, arr) {
       if (Aux[index] == alumn) {
@@ -82,5 +92,22 @@ export class AlumnoListaService {
     });
     this.lista = Aux;
     this.Alumnos$.next(this.lista);
+  }
+
+  buscar(nombre: string) {
+    if (nombre == '') {
+      this.Alumnos$.next(this.lista);
+    } else {
+      of(this.lista)
+        .pipe(
+          map((list: Alumnos[]) => {
+            return list.filter((list: Alumnos) => list.nombre == nombre);
+          })
+        )
+        .subscribe((list) => {
+          console.log('Buscar', list);
+          this.Alumnos$.next(list);
+        });
+    }
   }
 }

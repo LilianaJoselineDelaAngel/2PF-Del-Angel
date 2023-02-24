@@ -9,6 +9,10 @@
       <button mat-raised-button color="primary" (click)="nuevo(vacio)"><mat-icon>add</mat-icon></button>
       <br /><br />
     </div>
+    <input type="text" class="form-control" placeholder="Buscar" id="Buscar" autocomplete="off"
+      (keyup)="filtrar($event)">
+    <br />
+
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla>
         <ng-container matColumnDef="Acciones">

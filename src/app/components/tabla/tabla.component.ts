@@ -92,4 +92,9 @@ export class TablaComponent {
       asistencia: true,
     };
   }
+
+  filtrar(event: Event) {
+    let word = (event.target as HTMLInputElement).value;
+    this.AlumnoListaService.buscar(word);
+  }
 }
