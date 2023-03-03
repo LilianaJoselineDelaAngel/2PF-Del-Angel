@@ -3,7 +3,6 @@ import { Alumnos } from '../../models/alumnos';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { AlumnoListaService } from '../../services/alumno-lista.service';
 import { FormularioComponent } from '../../Alumnos/formulario/formulario.component';
-import { ModalComponent } from '../modal/modal.component';
 import {
   MatDialog,
   MAT_DIALOG_DATA,

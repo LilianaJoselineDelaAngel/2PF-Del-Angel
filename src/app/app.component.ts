@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlumnoListaService } from './services/alumno-lista.service';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +13,15 @@ export class AppComponent {
   nvo = null;
   nuevo(alumn: any) {
     this.nvo = alumn;
+  }
+
+  constructor(
+    private AlumnoListaService: AlumnoListaService,
+    private router: Router
+  ) {}
+
+  irinicio() {
+    console.log('inicio');
+    this.router.navigate(['inicio', { mensaje: 'inicio' }]);
   }
 }

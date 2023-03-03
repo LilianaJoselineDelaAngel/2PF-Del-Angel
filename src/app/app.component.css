@@ -26,3 +26,6 @@
   padding: 50px 50px;
   border-radius: 0;
 }
+.example-spacer {
+  flex: 1 1 auto;
+}

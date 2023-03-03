@@ -11,12 +11,17 @@ import { TablaComponent } from './components/tabla/tabla.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { AlumnoListaService } from './services/alumno-lista.service';
 import {
   MatDialogModule,
   MAT_DIALOG_DEFAULT_OPTIONS,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { RouterModule } from '@angular/router';
+import { PaginaNoEncontradaComponent } from './components/pagina-no-encontrada/pagina-no-encontrada.component';
+import { AppRoutingModule } from './app-routing.module'; // CLI imports
 
 @NgModule({
   declarations: [
@@ -24,6 +29,9 @@ import { MatButtonModule } from '@angular/material/button';
     ListaComponent,
     FormularioComponent,
     TablaComponent,
+    InicioComponent,
+
+    PaginaNoEncontradaComponent,
   ],
   imports: [
     MatIconModule,
@@ -35,6 +43,9 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
+    MatToolbarModule,
+    RouterModule,
+    AppRoutingModule, // CLI adds AppRoutingModule to the AppModule's imports array
   ],
 
   exports: [MatTableModule, MatIconModule, MatDialogModule, MatButtonModule],
@@ -45,6 +56,6 @@ import { MatButtonModule } from '@angular/material/button';
       useValue: { hasBackdrop: false, panelClass: 'mat-dialog-override' },
     },
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent, AppComponent],
 })
 export class AppModule {}

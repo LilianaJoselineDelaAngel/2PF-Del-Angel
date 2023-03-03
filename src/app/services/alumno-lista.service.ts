@@ -94,8 +94,8 @@ export class AlumnoListaService {
     this.Alumnos$.next(this.lista);
   }
 
-  buscar(nombre: string) {
-    if (nombre == '') {
+  buscar(buscar: string) {
+    if (buscar == '') {
       this.Alumnos$.next(this.lista);
     } else {
       of(this.lista)
@@ -104,7 +104,7 @@ export class AlumnoListaService {
             return list.filter((alumn) => {
               return alumn.nombre
                 .toLocaleLowerCase()
-                .includes(nombre.toLocaleLowerCase());
+                .includes(buscar.toLocaleLowerCase());
             });
           })
         )
