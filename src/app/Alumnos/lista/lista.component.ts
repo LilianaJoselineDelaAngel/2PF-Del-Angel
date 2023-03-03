@@ -18,7 +18,7 @@ import { Observable, Subscription } from 'rxjs';
 export class ListaComponent {
   Alumnos!: Alumnos;
   Alumnos$!: Observable<Alumnos[]>;
-  suscripcion!: Subscription;
+  // suscripcion!: Subscription;
   //dataSource!: MatTableDataSource<Alumnos>;
   constructor(
     private AlumnoListaService: AlumnoListaService,
@@ -36,9 +36,9 @@ export class ListaComponent {
     // );
   }
   //@ViewChild(MatTable) tabla!: MatTable<Alumnos>;
-  ngOnDestroy(): void {
-    this.suscripcion.unsubscribe();
-  }
+  // ngOnDestroy(): void {
+  //   this.suscripcion.unsubscribe();
+  // }
   //seleccionado = null;
   editarAlumno(alumn: any) {
     console.log('lista comp', alumn);

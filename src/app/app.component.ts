@@ -11,6 +11,7 @@ export class AppComponent {
   title = '1PF-Del-Angel';
 
   nvo = null;
+  location: any;
   nuevo(alumn: any) {
     this.nvo = alumn;
   }
